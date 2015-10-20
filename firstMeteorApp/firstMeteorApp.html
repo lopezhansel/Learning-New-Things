@@ -3,15 +3,14 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>Meteor is Awesome!</h1>
   <ul>
-	  {{#each resolutions}}
-	  {{> resolutions}}
-	  {{/each}}
+  	{{#each resolutions}}
+  		{{> resolution}}
+  	{{/each}}
   </ul>
 </body>
 
-<template name="resolutions">
-		<li>Title</li>
-	
+<template name="resolution">
+		<li>{{title}}</li>
 </template>

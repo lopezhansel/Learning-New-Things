@@ -1,7 +1,11 @@
  if (Meteor.isClient) {
+
   Template.body.helpers({
-    resolution: [
-    {title:"hello resolution #1"}]
+    resolutions: [
+	    {title:"hello resolution #1"},
+	    {title:"bye resolution #2"},
+	    {title:"Angular is also Awesome"}
+    ]
   });
 }
 
