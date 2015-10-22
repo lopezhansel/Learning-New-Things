@@ -1,7 +1,7 @@
 Meteor.startup(function () {
   if (Chats.find().count() === 0) {
     Messages.remove({});
- 
+
     var messages = [
       {
         text: 'You on your way?',
@@ -24,11 +24,11 @@ Meteor.startup(function () {
         timestamp: moment().subtract(2, 'weeks').toDate()
       }
     ];
- 
+
     messages.forEach(m => {
       Messages.insert(m);
     });
- 
+
     var chats = [
       {
         name: 'Ethan Gonzalez',
@@ -51,7 +51,7 @@ Meteor.startup(function () {
         picture: 'https://randomuser.me/api/portraits/thumb/men/2.jpg'
       }
     ];
- 
+
     chats.forEach(chat => {
       let message = Messages.findOne({chatId: {$exists: false}});
       chat.lastMessage = message;

@@ -17,7 +17,8 @@ function config($stateProvider, $urlRouterProvider) {
           controller: 'ChatsCtrl'
         }
       }
-    });
+    })
+    ;
  
   $urlRouterProvider.otherwise('tab/chats');
 }
