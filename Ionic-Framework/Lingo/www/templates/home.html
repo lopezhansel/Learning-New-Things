@@ -1,0 +1,25 @@
+<ion-view view-title="Lingo Translate">
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-divider">Translate Any Word</div>
+      <div class="item item-body">
+        <div>
+            <form data-ng-submit="postData()">
+              <label>Input : </label><input placeholder="Write Here" data-ng-model="word.text" type="text">
+              <input  value="Submit" type="submit">
+            </form>
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">hello</div>
+      <div class="item item-body">
+        <div>
+          Translated Text: 
+        </div>
+        <p>{{word.answer}}</p>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
