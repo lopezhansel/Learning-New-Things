@@ -10,8 +10,8 @@
 	// chain allows me chain many functions to a inputString
 	h.chain = function (inputString) {
 
-		// pervent error with other objects
-		if (typeof inputString !== 'string') { throw "You need to input a string"};
+		// prevent error with other objects
+		if (typeof inputString !== 'string') { throw "You need to input a string";}
 
 		var fnsArray = Array.prototype.slice.call(arguments ,1);
 
