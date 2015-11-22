@@ -16,30 +16,39 @@
 
     // Here is the function constructor allowing me to not use  the"new" keyword
     h.init = function(firstName, lastName, lat,lng) {
-        
         var self = this;
         self.firstName = firstName || '';
         self.lastName = lastName || '';
         self.lat = lat || 0;
         self.lng = lng || 0;
         self.appart = 0;
-        
     };
 
+    // methods to move user up or down the latitude
     h.prototype = {
     	moveUp : function (){
-    		this.lat = this.lat +  1;
+    		this.lat +=  1;
     		return this;
-    	}
+    	},
+    	moveDown : function  () {
+    		this.lat += -1 ;
+    	},
+
     };
 
+    // tying  initializers prototype to the h prototype
     h.init.prototype = h.prototype;
 
+    // h for hansel :)
     root.h = h;
 })();
 
+
 var person1 = h("hasnel","lopez",40,40);
 
-var hello = person1.moveUp();
+person1.moveUp();
+person1.moveUp();
+person1.moveUp();
+person1.moveDown();
 
 console.log(person1);
