@@ -1,4 +1,5 @@
 // Problem :  Create a modular library using OOP
+// This library creates Person objects with coordinates. You can call methods on each person allowing them to move North, East, South, and West
 ;(function(){
 
 	// This is from underscore.js
@@ -10,12 +11,12 @@
             this;
 
 	// Inspired from jQuery to create Objects
-	var h = function(firstName,lastName,lat,lng){
-		return new h.init(firstName,lastName,lat,lng);
+	var explorer = function(firstName,lastName,lat,lng){
+		return new explorer.init(firstName,lastName,lat,lng);
 	};
 
     // Here is the function constructor allowing me to not use  the"new" keyword
-    h.init = function(firstName, lastName, lat,lng) {
+    explorer.init = function(firstName, lastName, lat,lng) {
         var self = this;
         self.firstName = firstName || '';
         self.lastName = lastName || '';
@@ -24,31 +25,63 @@
         self.appart = 0;
     };
 
-    // methods to move user up or down the latitude
-    h.prototype = {
-    	moveUp : function (){
-    		this.lat +=  1;
+    // methods to move user up or down the latitude and left and right the longitude
+    // you can chain these as well
+    explorer.prototype = {
+    	moveNorth : function (num){
+    		// If you're at the North pole you can't go anymore north.
+    		// you will start going south
+    		if(this.lat + num > 90){ 
+    			this.lat = 90 - (this.lat + num) % 90;
+    			this.lng += 180;
+	    		if(this.lng > 180){ this.lng -= 360;}
+    		} else { 
+	    		this.lat += num;
+	    	}
     		return this;
     	},
-    	moveDown : function  () {
-    		this.lat += -1 ;
+    	moveSouth : function  (num) {
+    		// If you're at the south pole you can't go anymore south.
+    		// you will start going North
+    		if(this.lat - num < -90){ 
+    			this.lat = (90 + (this.lat - num) % 90)*-1;
+    			this.lng += 180;
+	    		if(this.lng > 180){ this.lng -= 360;}
+    		} else { 
+    			// otherwise continue going south
+	    		this.lat -= num ;
+    		}
+    		return this;
     	},
-
+    	moveWest : function (num) {
+    		this.lng -= num;
+    		// if you go past -180 you start at 180
+    		if(this.lng < -180){ this.lng += 360;}
+    		return this;
+    	},
+    	moveEast : function (num) {
+    		this.lng += num;
+    		// if you go past 180 you start at -180
+    		if(this.lng > 180){ this.lng -= 360;}
+    		return this;
+    	},
+    	log : function  () {
+    		console.log(this);
+    		return this;
+    	}
     };
 
-    // tying  initializers prototype to the h prototype
-    h.init.prototype = h.prototype;
+    // tying  initializers prototype to the explorer prototype
+    explorer.init.prototype = explorer.prototype;
 
-    // h for hansel :)
-    root.h = h;
+    // tie explorer to the global object in the execution context
+    root.explorer = explorer;
 })();
 
 
-var person1 = h("hasnel","lopez",40,40);
+// instantiating person
+var person1 = explorer("hasnel","lopez",-88,50);
 
-person1.moveUp();
-person1.moveUp();
-person1.moveUp();
-person1.moveDown();
+// method chaining 
+person1.moveSouth(10).moveEast(5).moveEast(50).moveNorth(10).log();
 
-console.log(person1);
