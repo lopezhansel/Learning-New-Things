@@ -2,8 +2,16 @@
 // Note: this is not an OOP STYLE
 
 ;(function(){
-	// meant to use with global in node and window in the browser
-	var root = global || window;
+	
+	// This is from underscore.js
+	// Establish the root object, `window` (`self`) in the browser, `global`
+	// on the server, or `this` in some virtual machines. We use `self`
+	// instead of `window` for `WebWorker` support.
+	 var root = typeof self == 'object' && self.self === self && self ||
+            typeof global == 'object' && global.global === global && global ||
+            this;
+
+
 	// tie to global object in the global execution context 
 	root.h = function  () {};
 
