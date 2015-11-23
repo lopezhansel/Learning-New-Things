@@ -5,7 +5,7 @@ Here are a collections of small projects where I get to play with new exciting f
 These apps are not done. 
 
 ## Continue-Learning-Js
-Here I attempt to practice avanced concepts or features of Javascipt
+Here I attempt to practice advanced concepts or features of Javascipt
 
 ## Ionic
 Ionic makes it incredibly easy to build beautiful and interactive mobile apps using HTML5 and AngularJS.

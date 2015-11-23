@@ -93,7 +93,7 @@
 
 
 // instantiating person
-var person1 = explorer("hasnel","lopez",-88,40);
+var person1 = explorer("Hansel","Lopez",-88,40);
 
 // method chaining 
 person1.moveNorth(10).moveEast(5).moveEast(50).moveNorth(10).log();
