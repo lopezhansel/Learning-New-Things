@@ -1,5 +1,7 @@
+//  This Run first in the background when chrome starts
 var config = new Config();
 var store;
+
 config.loadConfiguration(function () {
 	console.log("initial configudration", config);
 	store = new Store(config);

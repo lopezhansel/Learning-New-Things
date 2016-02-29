@@ -14,4 +14,11 @@ var watchify = require('watchify');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 
+var webpack = require('webpack-stream');
 
+gulp.task('default', function() {
+  return gulp.src('index.js')
+    .pipe(webpack())
+    .pipe( uglify({ mangle: false }))
+    .pipe(gulp.dest('asset/'));
+});

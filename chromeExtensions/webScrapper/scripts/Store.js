@@ -1,14 +1,16 @@
+// Step 3 - SETTING UP STORE 
 var Store = function (config) {
-    this.config = config;
+	this.config = config;
 
-    // configure couchdb
-    this.sitemapDb = new PouchDB(this.config.sitemapDb);
+	// Configure CouchDB
+	this.sitemapDb = new PouchDb(this.config.sitemapDb);
 };
 
-var StoreScrapeResultWriter = function(db) {
-   this.db = db;
+var StoreScrapeResultWriter = function (db) {
+	// tie Database to 'this'
+	this.db = db;
 };
-
+// once scrap is done write to Database
 StoreScrapeResultWriter.prototype = {
     writeDocs: function(docs, callback) {
 		if(docs.length === 0) {
